@@ -2,7 +2,7 @@
     "name": "@nix24/eslint-config",
     "version": "0.0.1",
     "description": "Modern ESLint config for TypeScript projects with optional support for React and Vue. Powered by Stylistic, built for ESLint v9+.",
-    "main": "index.js",
+    "main": "dist/index.js",
     "scripts": {
         "build": "esbuild configs/index.ts --outdir=dist --minify"
     },
@@ -42,5 +42,12 @@
     "devDependencies": {
         "jiti": "^2.5.1",
         "type-fest": "^4.41.0"
-    }
+    },
+    "files": [
+        "dist",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "README.md"
+    ]
 }
