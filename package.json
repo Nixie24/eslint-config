@@ -26,7 +26,7 @@
         "modern-eslint",
         "nix24"
     ],
-    "author": "",
+    "author": "Nix24 <nix24@foxmail.com>",
     "license": "MIT",
     "packageManager": "pnpm@10.13.1",
     "dependencies": {
@@ -49,5 +49,8 @@
         "pnpm-lock.yaml",
         "pnpm-workspace.yaml",
         "README.md"
-    ]
+    ],
+    "publishConfig": {
+        "access": "public"
+    }
 }
