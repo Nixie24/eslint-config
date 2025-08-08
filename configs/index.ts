@@ -6,7 +6,7 @@ import { createNodeResolver, importX } from "eslint-plugin-import-x";
 import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
 import stylisticPlugin from "@stylistic/eslint-plugin";
 
-import type { ConfigArray } from "typescript-eslint";
+import type { FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 import type { Rules } from "./types";
 
 interface DefineConfigParams {
@@ -19,7 +19,7 @@ export function defineConfig({
     dirname,
     ignoreFiles = [],
     rules = {},
-}: DefineConfigParams): ConfigArray {
+}: DefineConfigParams): FlatConfig.ConfigArray {
     // 给 rules 合并默认值，并显式类型标注
     const mergedRules: Rules = {
         "no-empty-pattern": "off",
@@ -31,7 +31,7 @@ export function defineConfig({
         ...rules,
     };
 
-    const config: ConfigArray = tsConfig(
+    const config: FlatConfig.ConfigArray = tsConfig(
         ignoreFiles.map(f => includeIgnoreFile(f)),
         {
             extends: [
