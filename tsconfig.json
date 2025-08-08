@@ -16,8 +16,10 @@
         "node_modules",
         "**/node_modules/*"
     ],
-    "include": [
+    "files": [
         "eslint.config.ts",
-        "configs/**/*.ts"
+        "configs/index.ts",
+        "configs/index.d.ts",
+        "configs/types.ts"
     ]
 }
