@@ -26,9 +26,6 @@ importers:
       globals:
         specifier: ^16.3.0
         version: 16.3.0
-      typescript-eslint:
-        specifier: ^8.39.0
-        version: 8.39.0(eslint@9.32.0(jiti@2.5.1))(typescript@5.9.2)
     devDependencies:
       eslint:
         specifier: ^9.32.0
@@ -36,6 +33,9 @@ importers:
       jiti:
         specifier: ^2.5.1
         version: 2.5.1
+      typescript-eslint:
+        specifier: ^8.39.0
+        version: 8.39.0(eslint@9.32.0(jiti@2.5.1))(typescript@5.9.2)
 
 packages:
 
