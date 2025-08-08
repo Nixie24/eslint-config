@@ -1,19 +1,27 @@
 import { includeIgnoreFile } from "@eslint/compat";
-import ESLint from "@eslint/js";
-import { configs as TSconfigs, config as generateTSconfig, type ConfigArray } from "typescript-eslint";
+import js from "@eslint/js";
+import { configs as tsConfigs, config as tsConfig } from "typescript-eslint";
 import globals from "globals";
 import { createNodeResolver, importX } from "eslint-plugin-import-x";
 import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
-import stylistic from "@stylistic/eslint-plugin";
-import { type Rules } from "./types";
-export function defineConfig({
-    dirname, ignoreFiles = [], rules = {},
-}: {
+import stylisticPlugin from "@stylistic/eslint-plugin";
+
+import type { ConfigArray } from "typescript-eslint";
+import type { Rules } from "./types";
+
+interface DefineConfigParams {
     dirname: string;
     ignoreFiles?: string[];
     rules?: Rules;
-}): ConfigArray {
-    rules = {
+}
+
+export function defineConfig({
+    dirname,
+    ignoreFiles = [],
+    rules = {},
+}: DefineConfigParams): ConfigArray {
+    // 给 rules 合并默认值，并显式类型标注
+    const mergedRules: Rules = {
         "no-empty-pattern": "off",
         "@stylistic/array-bracket-newline": ["warn", { multiline: true, minItems: 3 }],
         "@stylistic/jsx-self-closing-comp": "warn",
@@ -23,17 +31,17 @@ export function defineConfig({
         ...rules,
     };
 
-    return generateTSconfig(
-        ignoreFiles.map(file => includeIgnoreFile(file)),
+    const config: ConfigArray = tsConfig(
+        ignoreFiles.map(f => includeIgnoreFile(f)),
         {
             extends: [
-                ESLint.configs.recommended,
-                TSconfigs.strictTypeChecked,
-                TSconfigs.stylistic,
+                js.configs.recommended,
+                tsConfigs.strictTypeChecked,
+                tsConfigs.stylistic,
                 importX.flatConfigs.recommended,
                 importX.flatConfigs.typescript,
                 importX.flatConfigs.react,
-                stylistic.configs.customize({
+                stylisticPlugin.configs.customize({
                     jsx: true,
                     indent: 4,
                     quotes: "double",
@@ -49,17 +57,12 @@ export function defineConfig({
             },
             languageOptions: {
                 ecmaVersion: "latest",
-                globals: {
-                    ...globals.browser,
-                    ...globals.node,
-                    ...globals.es2025,
-                },
-                parserOptions: {
-                    projectService: true,
-                    tsconfigRootDir: dirname,
-                },
+                globals: { ...globals.browser, ...globals.node, ...globals.es2025 },
+                parserOptions: { projectService: true, tsconfigRootDir: dirname },
             },
-            rules,
+            rules: mergedRules,
         },
     );
+
+    return config;
 }
