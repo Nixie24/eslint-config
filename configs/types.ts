@@ -6,4 +6,9 @@ type StylisticRules = {
     [K in keyof RuleOptions]: Linter.RuleEntry<RuleOptions[K]>
 };
 
-export type Rules = StylisticRules & ESLintRules;
+export type InfiniteDepthConfigWithExtends = ConfigWithExtends | InfiniteDepthConfigWithExtends[];
+export type ConfigWithExtends = Linter.Config<Rules> & {
+    extends?: InfiniteDepthConfigWithExtends[];
+};
+
+export type Rules = StylisticRules & ESLintRules & Linter.RulesRecord;

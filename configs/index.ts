@@ -7,16 +7,14 @@ import { createTypeScriptImportResolver } from "eslint-import-resolver-typescrip
 import stylisticPlugin from "@stylistic/eslint-plugin";
 import { configs as securityPlugin } from "eslint-plugin-security";
 
-import type { Rules } from "./types";
+import type { InfiniteDepthConfigWithExtends, Rules } from "./types";
 import { Linter } from "eslint";
 
 interface DefineConfigParams {
     root: string;
     ignoreFiles?: string[];
-    configs?: ConfigArray;
+    configs?: InfiniteDepthConfigWithExtends;
 }
-
-export type ConfigArray = Linter.Config<Rules>[];
 
 export function defineConfig({
     root,
@@ -65,8 +63,8 @@ export function defineConfig({
             },
             rules: mergedRules,
         },
-        ...configs,
+        configs,
     );
 
-    return config as ConfigArray;
+    return config as Linter.Config;
 }
