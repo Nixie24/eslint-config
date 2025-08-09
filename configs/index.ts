@@ -11,15 +11,15 @@ import type { Rules } from "./types";
 import { Linter } from "eslint";
 
 interface DefineConfigParams {
-    dirname: string;
+    root: string;
     ignoreFiles?: string[];
     configs?: ConfigArray;
 }
 
-export type ConfigArray = (Linter.Config & { rules?: Partial<Rules> })[];
+export type ConfigArray = Linter.Config<Rules>[];
 
 export function defineConfig({
-    dirname,
+    root,
     ignoreFiles = [],
     configs = [],
 }: DefineConfigParams) {
@@ -61,7 +61,7 @@ export function defineConfig({
             languageOptions: {
                 ecmaVersion: "latest",
                 globals: { ...globals.browser, ...globals.node, ...globals.es2025 },
-                parserOptions: { projectService: true, tsconfigRootDir: dirname },
+                parserOptions: { projectService: true, tsconfigRootDir: root },
             },
             rules: mergedRules,
         },
