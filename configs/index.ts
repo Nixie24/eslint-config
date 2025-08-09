@@ -12,25 +12,24 @@ import { Linter } from "eslint";
 interface DefineConfigParams {
     dirname: string;
     ignoreFiles?: string[];
-    rules?: Rules;
+    configs?: ConfigArray;
 }
 
-export type ConfigArray = Linter.Config[];
+export type ConfigArray = (Linter.Config & { rules?: Partial<Rules> })[];
 
 export function defineConfig({
     dirname,
     ignoreFiles = [],
-    rules = {},
+    configs = [],
 }: DefineConfigParams) {
     // 给 rules 合并默认值，并显式类型标注
-    const mergedRules: Rules = {
+    const mergedRules: Partial<Rules> = {
         "no-empty-pattern": "off",
         "@stylistic/array-bracket-newline": ["warn", { multiline: true, minItems: 3 }],
         "@stylistic/jsx-self-closing-comp": "warn",
         "@stylistic/max-len": ["warn", { code: 120, ignoreUrls: true }],
         "@stylistic/operator-linebreak": ["warn", "before"],
         "@stylistic/newline-per-chained-call": ["warn", { ignoreChainWithDepth: 4 }],
-        ...rules,
     };
 
     const config = tsConfig(
@@ -64,6 +63,7 @@ export function defineConfig({
             },
             rules: mergedRules,
         },
+        ...configs,
     );
 
     return config as ConfigArray;
