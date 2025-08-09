@@ -6,8 +6,8 @@ import { createNodeResolver, importX } from "eslint-plugin-import-x";
 import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
 import stylisticPlugin from "@stylistic/eslint-plugin";
 
-import type { ConfigArray as TSConfigArray } from "typescript-eslint";
 import type { Rules } from "./types";
+import { Linter } from "eslint";
 
 interface DefineConfigParams {
     dirname: string;
@@ -15,7 +15,7 @@ interface DefineConfigParams {
     rules?: Rules;
 }
 
-export type ConfigArray = TSConfigArray;
+export type ConfigArray = Linter.Config[];
 
 export function defineConfig({
     dirname,
@@ -33,7 +33,7 @@ export function defineConfig({
         ...rules,
     };
 
-    const config: ConfigArray = tsConfig(
+    const config = tsConfig(
         ignoreFiles.map(f => includeIgnoreFile(f)),
         {
             extends: [
@@ -66,5 +66,5 @@ export function defineConfig({
         },
     );
 
-    return config;
+    return config as ConfigArray;
 }
