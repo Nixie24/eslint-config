@@ -5,6 +5,7 @@ import globals from "globals";
 import { createNodeResolver, importX } from "eslint-plugin-import-x";
 import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
 import stylisticPlugin from "@stylistic/eslint-plugin";
+import { configs as securityPlugin } from "eslint-plugin-security";
 
 import type { Rules } from "./types";
 import { Linter } from "eslint";
@@ -42,6 +43,7 @@ export function defineConfig({
                 importX.flatConfigs.recommended,
                 importX.flatConfigs.typescript,
                 importX.flatConfigs.react,
+                securityPlugin.recommended,
                 stylisticPlugin.configs.customize({
                     jsx: true,
                     indent: 4,
