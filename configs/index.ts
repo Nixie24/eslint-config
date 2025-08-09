@@ -21,7 +21,7 @@ export function defineConfig({
     dirname,
     ignoreFiles = [],
     rules = {},
-}: DefineConfigParams): ConfigArray {
+}: DefineConfigParams) {
     // 给 rules 合并默认值，并显式类型标注
     const mergedRules: Rules = {
         "no-empty-pattern": "off",

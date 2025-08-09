@@ -10,15 +10,14 @@
 Install the package:
 
 ```bash
-npm install --save-dev @nix24/eslint-config eslint typescript-eslint jiti
+npm install --save-dev @nix24/eslint-config eslint
 ```
 
-Then, create a `eslint.config.ts` file in your project root and add the following:
+Then, create a `eslint.config.ts` or `eslint.config.js` file in your project root and add the following:
 ```ts
-import type { ConfigArray } from "typescript-eslint";
 import { defineConfig } from "@nix24/eslint-config";
-const config: ConfigArray = defineConfig({
+
+export default defineConfig({
     dirname: import.meta.dirname,
 });
-export default config;
 ```
