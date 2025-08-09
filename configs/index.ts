@@ -6,7 +6,7 @@ import { createNodeResolver, importX } from "eslint-plugin-import-x";
 import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
 import stylisticPlugin from "@stylistic/eslint-plugin";
 
-import type { ConfigArray } from "typescript-eslint";
+import type { ConfigArray as TSConfigArray } from "typescript-eslint";
 import type { Rules } from "./types";
 
 interface DefineConfigParams {
@@ -14,6 +14,8 @@ interface DefineConfigParams {
     ignoreFiles?: string[];
     rules?: Rules;
 }
+
+export type ConfigArray = TSConfigArray;
 
 export function defineConfig({
     dirname,
