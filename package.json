@@ -1,6 +1,6 @@
 {
     "name": "@nix24/eslint-config",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "description": "Modern ESLint config for TypeScript projects with optional support for React and Vue. Powered by Stylistic, built for ESLint v9+.",
     "main": "dist/index.js",
     "scripts": {
@@ -57,6 +57,6 @@
         "access": "public"
     },
     "peerDependencies": {
-        "eslint": "^9.32.0"
+        "eslint": "^9"
     }
 }
