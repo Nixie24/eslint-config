@@ -29,6 +29,17 @@ export function defineConfig({
         "@stylistic/max-len": ["warn", { code: 120, ignoreUrls: true }],
         "@stylistic/operator-linebreak": ["warn", "before"],
         "@stylistic/newline-per-chained-call": ["warn", { ignoreChainWithDepth: 4 }],
+        "@stylistic/jsx-sort-props": [
+            "warn", {
+                ignoreCase: true,
+                callbacksLast: true,
+                shorthandFirst: false,
+                shorthandLast: true,
+                multiline: "last",
+                reservedFirst: true,
+                locale: "en",
+            },
+        ],
     };
 
     const config = tsConfig(
