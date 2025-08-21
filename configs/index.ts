@@ -24,6 +24,8 @@ export function defineConfig({
     // 给 rules 合并默认值，并显式类型标注
     const mergedRules: Partial<Rules> = {
         "no-empty-pattern": "off",
+        "@stylistic/no-extra-parens": "warn",
+        "@stylistic/no-extra-semi": "warn",
         "@stylistic/array-bracket-newline": ["warn", { multiline: true, minItems: 3 }],
         "@stylistic/jsx-self-closing-comp": "warn",
         "@stylistic/max-len": ["warn", { code: 120, ignoreUrls: true }],
@@ -39,6 +41,37 @@ export function defineConfig({
                 reservedFirst: true,
                 locale: "en",
             },
+        ],
+        "@stylistic/array-bracket-spacing": ["warn", "never"],
+        "@stylistic/arrow-parens": ["warn", "as-needed"],
+        "@stylistic/block-spacing": ["warn", "always"],
+        "@stylistic/brace-style": [
+            "warn", "1tbs", { allowSingleLine: true },
+        ],
+        "@stylistic/comma-dangle": ["warn", "always-multiline"],
+        "@stylistic/comma-spacing": ["warn", { before: false, after: true }],
+        "@stylistic/comma-style": ["warn", "last"],
+        "@stylistic/dot-location": ["warn", "property"],
+        "@stylistic/func-call-spacing": ["warn", "never"],
+        "@stylistic/indent": [
+            "warn", 4, { SwitchCase: 1 },
+        ],
+        "@stylistic/key-spacing": ["warn", { beforeColon: false, afterColon: true }],
+        "@stylistic/keyword-spacing": ["warn", { before: true, after: true }],
+        "@stylistic/no-multiple-empty-lines": ["warn", { max: 1, maxEOF: 0 }],
+        "@stylistic/object-curly-newline": ["warn", { multiline: true, consistent: true }],
+        "@stylistic/object-curly-spacing": ["warn", "always"],
+        "@stylistic/quote-props": ["warn", "as-needed"],
+        "@stylistic/quotes": [
+            "warn", "double", { avoidEscape: true },
+        ],
+        "@stylistic/semi": ["warn", "always"],
+        "@stylistic/space-before-blocks": ["warn", "always"],
+        "@stylistic/space-before-function-paren": ["warn", "never"],
+        "@stylistic/space-in-parens": ["warn", "never"],
+        "@stylistic/space-infix-ops": "warn",
+        "@stylistic/spaced-comment": [
+            "warn", "always", { markers: ["/"] },
         ],
     };
 
