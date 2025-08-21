@@ -52,7 +52,7 @@ export function defineConfig({
         "@stylistic/comma-spacing": ["warn", { before: false, after: true }],
         "@stylistic/comma-style": ["warn", "last"],
         "@stylistic/dot-location": ["warn", "property"],
-        "@stylistic/func-call-spacing": ["warn", "never"],
+        "@stylistic/function-call-spacing": ["warn", "never"],
         "@stylistic/indent": [
             "warn", 4, { SwitchCase: 1 },
         ],
