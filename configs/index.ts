@@ -73,6 +73,7 @@ export function defineConfig({
         "@stylistic/spaced-comment": [
             "warn", "always", { markers: ["/"] },
         ],
+        eqeqeq: "error",
     };
 
     const config = tsConfig(
