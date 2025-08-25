@@ -1,6 +1,6 @@
 {
     "name": "@nix24/eslint-config",
-    "version": "6.2.1",
+    "version": "6.2.2",
     "description": "Modern ESLint config for TypeScript projects with optional support for React and Vue. Powered by Stylistic, built for ESLint v9+.",
     "main": "dist/index.js",
     "scripts": {
